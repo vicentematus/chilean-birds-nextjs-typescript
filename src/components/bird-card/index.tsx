@@ -3,7 +3,13 @@ import Image from "next/image";
 
 import type { Bird } from "types";
 const BirdCard = ({ bird }: { bird: Bird }) => {
-  const { uid, name, images, _links } = bird;
+  const { uid, name, images, _links, sort } = bird;
+
+  // In this case we are gonna use the API endpoint to give it priority if its less than 15 images rendered. So we avoid CLS on the first render.
+  let prerender = true;
+  if (sort > 20) {
+    prerender = false;
+  }
   return (
     <Link
       href={`birds/${uid}`}
@@ -17,6 +23,7 @@ const BirdCard = ({ bird }: { bird: Bird }) => {
               src={bird.images.thumb}
               height={200}
               width={200}
+              priority={prerender}
               className="mx-auto rounded-lg"
               alt={bird.name.spanish}
             ></Image>

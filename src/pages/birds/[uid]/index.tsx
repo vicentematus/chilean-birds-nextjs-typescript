@@ -8,6 +8,8 @@ import type {
   GetServerSideProps,
   InferGetServerSidePropsType,
   NextPage,
+  GetStaticPaths,
+  GetStaticProps,
 } from "next";
 import type { BirdDetail } from "types";
 import Image from "next/image";
@@ -15,9 +17,7 @@ import Breadcrumbs from "components/breadcrumbs";
 import Player from "components/audioplayer";
 import GalleryPreview from "components/image-gallery";
 
-const BirdPage: NextPage = ({
-  bird,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const BirdPage: NextPage = ({ bird }) => {
   console.log(bird);
   return (
     <>
@@ -139,19 +139,33 @@ const BirdPage: NextPage = ({
   );
 };
 
-export const getServerSideProps: GetServerSideProps<{
-  bird: BirdDetail;
-}> = async (context) => {
-  const { uid } = context.query;
+export const getStaticPaths: GetStaticPaths = async () => {
+  const response = await fetch("https://aves.ninjas.cl/api/birds");
+  const data: Bird[] = await response.json();
+  const paths = data.map((bird) => {
+    return {
+      params: {
+        uid: bird.uid,
+      },
+    };
+  });
+
+  return {
+    paths,
+    fallback: false,
+  };
+};
+export const getStaticProps: GetStaticProps = async (context) => {
+  //This is a single object
+  const { uid } = context.params;
   const response = await fetch(`https://aves.ninjas.cl/api/birds/${uid}`);
-
   const bird: BirdDetail = await response.json();
-
-  console.log("bird es ", bird);
+  console.log(bird);
   return {
     props: {
       bird: bird as BirdDetail,
     },
   };
 };
+
 export default BirdPage;

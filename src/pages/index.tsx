@@ -1,5 +1,7 @@
 import {
   GetServerSideProps,
+  GetStaticPaths,
+  GetStaticProps,
   InferGetServerSidePropsType,
   type NextPage,
 } from "next";
@@ -9,9 +11,7 @@ import BirdCard from "components/bird-card/index";
 import InfiniteScroller from "react-infinite-scroller";
 import { useState } from "react";
 import EmptyState from "components/empty-state";
-const Home: NextPage = ({
-  birds,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const Home: NextPage = ({ birds }) => {
   const [birdList, setBirdList] = useState<Bird[]>(birds);
   const updateSearch = (event: React.FormEvent<HTMLInputElement>) => {
     const value = event.target.value;
@@ -99,7 +99,7 @@ const Home: NextPage = ({
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const response = await fetch("https://aves.ninjas.cl/api/birds");
   const birds: Bird[] = await response.json();
   console.log(birds);
