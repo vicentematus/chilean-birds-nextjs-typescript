@@ -8,6 +8,7 @@ import type { Bird } from "types";
 import BirdCard from "components/bird-card/index";
 import InfiniteScroller from "react-infinite-scroller";
 import { useState } from "react";
+import EmptyState from "components/empty-state";
 const Home: NextPage = ({
   birds,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
@@ -52,9 +53,12 @@ const Home: NextPage = ({
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex min-h-screen items-center justify-center bg-gray-50 text-gray-900">
+      <main className="bg-gray-50 text-gray-900">
         <div>
-          <h1 className="text-5xl"> revisa todos los pajaros</h1>
+          <h1 className="text-5xl">
+            {" "}
+            Encuentra toda la información respecto a los pajaros chilenos 🐦
+          </h1>
           <div>
             <div className="relative mx-auto pt-2 text-gray-600">
               <input
@@ -84,7 +88,7 @@ const Home: NextPage = ({
                     <BirdCard bird={bird} key={bird.uid} />
                   ))
                 ) : (
-                  <div> NO HAY RESULTADOS!</div>
+                  <EmptyState />
                 )}
               </div>
             </InfiniteScroller>

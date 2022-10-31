@@ -14,7 +14,13 @@ const config = {
     defaultLocale: "es",
   },
   images: {
-    domains: ["aves.ninjas.cl"],
+    domains: ["aves.ninjas.cl", "tailwindui.com"],
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
   },
 };
 export default config;

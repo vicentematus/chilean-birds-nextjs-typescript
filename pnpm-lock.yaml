@@ -1,9 +1,12 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@headlessui/react': ^1.7.3
+  '@heroicons/react': ^2.0.12
   '@types/node': 18.0.0
   '@types/react': 18.0.14
   '@types/react-dom': 18.0.5
+  '@types/react-image-gallery': ^1.2.0
   '@types/react-infinite-scroller': ^1.2.3
   '@types/react-virtualized-auto-sizer': ^1.0.1
   '@types/react-window': ^1.8.5
@@ -13,6 +16,7 @@ specifiers:
   axios: ^1.1.3
   eslint: 8.22.0
   eslint-config-next: 13.0.0
+  heroicons: ^2.0.12
   next: 13.0.0
   next-translate: ^1.6.0
   postcss: ^8.4.14
@@ -20,6 +24,8 @@ specifiers:
   prettier-plugin-tailwindcss: ^0.1.13
   react: 18.2.0
   react-dom: 18.2.0
+  react-h5-audio-player: ^3.8.6
+  react-image-gallery: ^1.2.11
   react-infinite-scroller: ^1.2.6
   react-intl: ^6.2.1
   react-virtualized-auto-sizer: ^1.0.7
@@ -29,13 +35,18 @@ specifiers:
   zod: ^3.18.0
 
 dependencies:
+  '@headlessui/react': 1.7.3_biqbaboplfbrettd7655fr4n2y
+  '@heroicons/react': 2.0.12_react@18.2.0
   '@types/react-virtualized-auto-sizer': 1.0.1
   '@types/react-window': 1.8.5
   axios: 1.1.3
+  heroicons: 2.0.12
   next: 13.0.0_biqbaboplfbrettd7655fr4n2y
   next-translate: 1.6.0_next@13.0.0+react@18.2.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  react-h5-audio-player: 3.8.6_biqbaboplfbrettd7655fr4n2y
+  react-image-gallery: 1.2.11_react@18.2.0
   react-infinite-scroller: 1.2.6_react@18.2.0
   react-intl: 6.2.1_uz2ogxeagc4rbieizlfzyaazee
   react-virtualized-auto-sizer: 1.0.7_biqbaboplfbrettd7655fr4n2y
@@ -46,6 +57,7 @@ devDependencies:
   '@types/node': 18.0.0
   '@types/react': 18.0.14
   '@types/react-dom': 18.0.5
+  '@types/react-image-gallery': 1.2.0
   '@types/react-infinite-scroller': 1.2.3
   '@typescript-eslint/eslint-plugin': 5.41.0_ii42b3tyaj4mcq7qkttdyoixza
   '@typescript-eslint/parser': 5.41.0_yv3nvntfnealqm77uomj2fi4ki
@@ -159,6 +171,25 @@ packages:
       typescript: 4.8.4
     dev: false
 
+  /@headlessui/react/1.7.3_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-LGp06SrGv7BMaIQlTs8s2G06moqkI0cb0b8stgq7KZ3xcHdH3qMP+cRyV7qe5x4XEW/IGY48BW4fLesD6NQLng==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: ^16 || ^17 || ^18
+      react-dom: ^16 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
+
+  /@heroicons/react/2.0.12_react@18.2.0:
+    resolution: {integrity: sha512-FZxKh3i9aKIDxyALTgIpSF2t6V6/eZfF5mRu41QlwkX3Oxzecdm1u6dpft6PQGxIBwO7TKYWaMAYYL8mp/EaOg==}
+    peerDependencies:
+      react: '>= 16'
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /@humanwhocodes/config-array/0.10.7:
     resolution: {integrity: sha512-MDl6D6sBsaV452/QSdX+4CXIjZhIcI0PELsxUjk4U828yd58vk3bTIvk/6w5FY+4hIy9sLW0sfrV7K7Kc++j/w==}
     engines: {node: '>=10.10.0'}
@@ -177,6 +208,18 @@ packages:
   /@humanwhocodes/object-schema/1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
+
+  /@iconify/icons-mdi/1.1.47:
+    resolution: {integrity: sha512-6AZfvWru20Rl9pXULStkVvTWnua6VG56zOIKdkCzLh25XVeTDEp6f1dL7iX9w+way5+1hI0BBuqTQd61qYaKdg==}
+    dev: false
+
+  /@iconify/react/3.2.2_react@18.2.0:
+    resolution: {integrity: sha512-z3+Jno3VcJzgNHsN5mEvYMsgCkOZkydqdIwOxjXh45+i2Vs9RGH68Y52vt39izwFSfuYUXhaW+1u7m7+IhCn/g==}
+    peerDependencies:
+      react: '>=16'
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /@next/env/13.0.0:
     resolution: {integrity: sha512-65v9BVuah2Mplohm4+efsKEnoEuhmlGm8B2w6vD1geeEP2wXtlSJCvR/cCRJ3fD8wzCQBV41VcMBQeYET6MRkg==}
@@ -360,6 +403,12 @@ packages:
 
   /@types/react-dom/18.0.5:
     resolution: {integrity: sha512-OWPWTUrY/NIrjsAPkAk1wW9LZeIjSvkXRhclsFO8CZcZGCOg2G0YZy4ft+rOyYxy8B7ui5iZzi9OkDebZ7/QSA==}
+    dependencies:
+      '@types/react': 18.0.14
+    dev: true
+
+  /@types/react-image-gallery/1.2.0:
+    resolution: {integrity: sha512-y5OEficUWcnGEc6KvflRXgvhtaMSsDH6JGT3/SJs0FV/RgtKuIgrUpGbDw5MdzyUwe/D8sJTo+aw8NOkaX0nIA==}
     dependencies:
       '@types/react': 18.0.14
     dev: true
@@ -1486,6 +1535,10 @@ packages:
       function-bind: 1.1.1
     dev: true
 
+  /heroicons/2.0.12:
+    resolution: {integrity: sha512-fqK3k5a1F5eUf74cebh2Ng82lCskDwMbMno9f/BCyZQjSJ8bXKl7jK3507pOSIvB2QrZjF9SD0YQzkKUx1iiNw==}
+    dev: false
+
   /hoist-non-react-statics/3.3.2:
     resolution: {integrity: sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==}
     dependencies:
@@ -2124,6 +2177,27 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
+    dev: false
+
+  /react-h5-audio-player/3.8.6_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-eyViI47jRRybCcCkGdoAMd6yfhg3UMyXp39mqOWCbNQfAYI8U6zC0+0DLZjhrB7//DJtHhZx8h1q99HMxYkMWQ==}
+    peerDependencies:
+      react: ^16.3.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.3.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@babel/runtime': 7.20.0
+      '@iconify/icons-mdi': 1.1.47
+      '@iconify/react': 3.2.2_react@18.2.0
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
+
+  /react-image-gallery/1.2.11_react@18.2.0:
+    resolution: {integrity: sha512-YLMCdNSCf3YPhRmnjEOdEZGEXghTMx4o3dlAqd0rz0nAyebUvTz/xJnIHPActbPSHCvVJgt5A09EPHYbGqw++w==}
+    peerDependencies:
+      react: ^16.0.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /react-infinite-scroller/1.2.6_react@18.2.0:

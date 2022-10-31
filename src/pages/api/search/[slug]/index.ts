@@ -1,5 +1,8 @@
-import { NextApiRequest, NextApiResponse } from "next";
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+import type { NextApiRequest, NextApiResponse } from "next";
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   const { method } = req;
 
   switch (method) {
@@ -8,6 +11,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       console.log("Esto es un post");
       console.log("slug es", slug);
 
+      //const response = await fetch("https://aves.ninjas.cl/api/birds");
       res.status(200).json({ status: 200 });
     }
 
