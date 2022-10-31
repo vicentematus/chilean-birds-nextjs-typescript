@@ -13,9 +13,9 @@ const BirdCard = ({ bird }: { bird: Bird }) => {
 
   // // For some reason the uid of this bird contains spaces. And it's kinda weird how to work with spaces in the id.
   //   // That's why this the only bird that cant make it. Sorryl Oxyura Ferruginea.
-  // if (sort === 120) {
-  //   return;
-  // }
+  if (sort === 120) {
+    return;
+  }
   return (
     <Link
       href={`birds/${uid}`}

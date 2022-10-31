@@ -146,7 +146,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
     // For some reason the uid of this bird contains spaces. And it's kinda weird how to work with spaces in the id.
     // That's why this the only bird that cant make it. Sorryl Oxyura Ferruginea.
     if (bird.sort === 120) {
-      return;
+      return {
+        params: {
+          uid: encodeURIComponent("41-chloephaga-picta"),
+        },
+      };
     }
     return {
       params: {
@@ -154,6 +158,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
       },
     };
   });
+
+  console.log("Paths a construir es", paths);
 
   return {
     paths,
@@ -163,6 +169,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async (context) => {
   //This is a single object
   const { uid } = context.params;
+
   const response = await fetch(
     `https://aves.ninjas.cl/api/birds/${encodeURIComponent(uid)}`
   );

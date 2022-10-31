@@ -9,10 +9,7 @@
 const config = {
   reactStrictMode: true,
   swcMinify: true,
-  i18n: {
-    locales: ["en", "es"],
-    defaultLocale: "es",
-  },
+
   images: {
     domains: ["aves.ninjas.cl", "tailwindui.com"],
   },
