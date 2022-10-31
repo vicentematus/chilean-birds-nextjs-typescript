@@ -11,7 +11,7 @@ import type {
   GetStaticPaths,
   GetStaticProps,
 } from "next";
-import type { BirdDetail } from "types";
+import type { Bird, BirdDetail } from "types";
 import Image from "next/image";
 import Breadcrumbs from "components/breadcrumbs";
 import Player from "components/audioplayer";
@@ -143,9 +143,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const response = await fetch("https://aves.ninjas.cl/api/birds");
   const data: Bird[] = await response.json();
   const paths = data.map((bird) => {
+    // For some reason the uid of this bird contains spaces. And it's kinda weird how to work with spaces in the id.
+    // That's why this the only bird that cant make it. Sorryl Oxyura Ferruginea.
+    // if (bird.sort === 120) {
+    //   return;
+    // }
     return {
       params: {
-        uid: bird.uid,
+        uid: encodeURIComponent(bird.uid),
       },
     };
   });
