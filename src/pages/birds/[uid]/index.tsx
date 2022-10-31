@@ -145,9 +145,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths = data.map((bird) => {
     // For some reason the uid of this bird contains spaces. And it's kinda weird how to work with spaces in the id.
     // That's why this the only bird that cant make it. Sorryl Oxyura Ferruginea.
-    // if (bird.sort === 120) {
-    //   return;
-    // }
+    if (bird.sort === 120) {
+      return;
+    }
     return {
       params: {
         uid: encodeURIComponent(bird.uid),
