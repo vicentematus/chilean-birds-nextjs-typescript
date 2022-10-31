@@ -163,7 +163,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async (context) => {
   //This is a single object
   const { uid } = context.params;
-  const response = await fetch(`https://aves.ninjas.cl/api/birds/${uid}`);
+  const response = await fetch(
+    `https://aves.ninjas.cl/api/birds/${encodeURIComponent(uid)}`
+  );
   const bird: BirdDetail = await response.json();
   console.log(bird);
   return {
