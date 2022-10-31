@@ -8,16 +8,16 @@ import type {
   GetServerSideProps,
   InferGetServerSidePropsType,
   NextPage,
+  GetStaticPaths,
+  GetStaticProps,
 } from "next";
-import type { BirdDetail } from "types";
+import type { Bird, BirdDetail } from "types";
 import Image from "next/image";
 import Breadcrumbs from "components/breadcrumbs";
 import Player from "components/audioplayer";
 import GalleryPreview from "components/image-gallery";
 
-const BirdPage: NextPage = ({
-  bird,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const BirdPage: NextPage = ({ bird }) => {
   console.log(bird);
   return (
     <>
@@ -139,19 +139,47 @@ const BirdPage: NextPage = ({
   );
 };
 
-export const getServerSideProps: GetServerSideProps<{
-  bird: BirdDetail;
-}> = async (context) => {
-  const { uid } = context.query;
-  const response = await fetch(`https://aves.ninjas.cl/api/birds/${uid}`);
+export const getStaticPaths: GetStaticPaths = async () => {
+  const response = await fetch("https://aves.ninjas.cl/api/birds");
+  const data: Bird[] = await response.json();
+  const paths = data.map((bird) => {
+    // For some reason the uid of this bird contains spaces. And it's kinda weird how to work with spaces in the id.
+    // That's why this the only bird that cant make it. Sorryl Oxyura Ferruginea.
+    if (bird.sort === 120) {
+      return {
+        params: {
+          uid: encodeURIComponent("41-chloephaga-picta"),
+        },
+      };
+    }
+    return {
+      params: {
+        uid: encodeURIComponent(bird.uid),
+      },
+    };
+  });
 
+  console.log("Paths a construir es", paths);
+
+  return {
+    paths,
+    fallback: false,
+  };
+};
+export const getStaticProps: GetStaticProps = async (context) => {
+  //This is a single object
+  const { uid } = context.params;
+
+  const response = await fetch(
+    `https://aves.ninjas.cl/api/birds/${encodeURIComponent(uid)}`
+  );
   const bird: BirdDetail = await response.json();
-
-  console.log("bird es ", bird);
+  console.log(bird);
   return {
     props: {
       bird: bird as BirdDetail,
     },
   };
 };
+
 export default BirdPage;
