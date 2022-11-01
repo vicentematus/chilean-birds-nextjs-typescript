@@ -30,7 +30,7 @@ For production just use `next build`. It's gonna take some time because we need 
 pnpm run build
 ```
 
-> You can see in next.config.mjs that i added eslint skip and typescript error, because i have some conflicts on some types errors.
+> You can see in next.config.mjs that i added eslint skip and typescript error.
 
 # Future Work
 
